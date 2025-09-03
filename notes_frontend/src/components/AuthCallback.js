@@ -15,11 +15,13 @@ export default function AuthCallback({ onSuccess, onError, navigate }) {
       if (data?.session) {
         if (onSuccess) onSuccess(data.session);
         if (navigate) navigate('/'); // default to home
+      } else {
+        if (navigate) navigate('/signin');
       }
     };
 
     handleAuthCallback();
   }, [navigate, onError, onSuccess]);
 
-  return <div>Processing authentication...</div>;
+  return <div style={{ padding: 24 }}>Processing authentication...</div>;
 }
